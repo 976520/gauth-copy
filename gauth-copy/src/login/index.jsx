@@ -1,6 +1,15 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Login from "./Login";
+import IdInput from "./idInput.jsx";
+import PasswordInput from "./passwordInput.jsx";
 
-ReactDOM.render(<Login />, document.getElementById("id-root"));
-ReactDOM.render(<Login />, document.getElementById("password-root"));
+const LoginForm = () => {
+  return (
+    <div>
+      <IdInput />
+      <PasswordInput />
+    </div>
+  );
+};
+
+ReactDOM.render(<LoginForm />, document.getElementById("loginForm"));
