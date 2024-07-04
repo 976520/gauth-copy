@@ -34,10 +34,14 @@ function Login() {
   const [error, setError] = useState("");
 
   const handleLogin = () => {
-    if (id === "user" && password === "password") {
-      alert("로그인 성공");
+    if (id !== "user") {
+      setError("해당 유저를 찾을 수 없습니다.");
+    } else if (password !== "text1234") {
+      setError("비밀번호가 일치하지 않습니다..");
     } else {
-      setError("잘못됨ㅋ");
+      alert("로그인 성공");
+      setId("");
+      setPassword("");
     }
   };
 

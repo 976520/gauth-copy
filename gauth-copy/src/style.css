@@ -10,13 +10,3 @@ body {
   display: flex;
   justify-content: center;
 }
-
-#wrapper {
-  display: flex;
-  flex-direction: column;
-  align-self: center;
-  justify-self: center;
-  width: 25vw;
-  position: absolute;
-  top: 15vh;
-}
