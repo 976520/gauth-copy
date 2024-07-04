@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import styled from "styled-components";
 
-const LoginButton = styled.div`
+const LoginButton = styled.button`
   background-color: rgb(84, 153, 217);
   width: 25vw;
   height: 6vh;
@@ -50,21 +50,27 @@ function Login() {
         setError("비밀번호가 일치하지 않습니다..");
       } else {
         alert("로그인 성공");
-        setEmail("");
-        setPassword("");
-        setError("");
+        init();
       }
     }
+  };
+
+  const init = () => {
+    setEmail("");
+    setPassword("");
+    setError("");
   };
 
   return (
     <div>
       <div>
         <label htmlFor="email">{emailText}</label>
+        <br />
         <input type="text" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
       </div>
       <div>
         <label htmlFor="password">{passwordText}</label>
+        <br />
         <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
       </div>
       {error && <p style={{ color: "red" }}>{error}</p>}

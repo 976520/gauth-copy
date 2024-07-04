@@ -1,5 +1,6 @@
 import Title from "./title/title.jsx";
 import LoginForm from "./loginForm/loginform.jsx";
+import SignUp from "./signUp/signUp.jsx";
 import React from "react";
 import styled from "styled-components";
 
@@ -17,6 +18,7 @@ function App() {
   return (
     <div id="wrapper">
       <Title />
+      <SignUp />
       <LoginForm />
     </div>
   );
