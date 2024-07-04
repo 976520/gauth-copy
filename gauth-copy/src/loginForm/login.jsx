@@ -76,6 +76,7 @@ function Login() {
       {error && <p style={{ color: "red" }}>{error}</p>}
       <div>
         <button onClick={handleLogin}>로그인</button>
+        <br />
         <a href="">비밀번호 찾기</a>
       </div>
     </div>
