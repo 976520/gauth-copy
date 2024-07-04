@@ -2,6 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import IdInput from "./idInput.jsx";
 import PasswordInput from "./passwordInput.jsx";
+import styled from "styled-components";
 
 const LoginForm = () => {
   return (

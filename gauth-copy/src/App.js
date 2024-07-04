@@ -1,5 +1,5 @@
-import Title from "./title/index.jsx";
-import LoginForm from "./loginForm/index.jsx";
+import Title from "./title/title.jsx";
+import LoginForm from "./loginForm/loginform.jsx";
 import React from "react";
 
 function App() {

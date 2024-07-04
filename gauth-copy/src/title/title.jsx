@@ -1,5 +1,4 @@
 import React from "react";
-import ReactDOM from "react-dom";
 import TitleText from "./titleText.jsx";
 import Logo from "./logo.jsx";
 
