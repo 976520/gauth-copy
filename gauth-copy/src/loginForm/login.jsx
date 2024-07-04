@@ -95,10 +95,8 @@ function Login() {
 
   const [emailText, setEmailText] = useState("이메일");
   const [passwordText, setPasswordText] = useState("비밀번호");
-
   localStorage.setItem("email", "test");
   localStorage.setItem("password", "test1234");
-
   const handleLogin = () => {
     if (!email) {
       setEmailText("*이메일 - 이메일을 입력하지 않았습니다");
