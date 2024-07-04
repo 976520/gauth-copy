@@ -12,4 +12,4 @@ const LoginForm = () => {
   );
 };
 
-ReactDOM.render(<LoginForm />, document.getElementById("loginForm"));
+export default LoginForm;

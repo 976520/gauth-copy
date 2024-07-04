@@ -12,4 +12,4 @@ const Title = () => {
   );
 };
 
-ReactDOM.render(<Title />, document.getElementById("title"));
+export default Title;
