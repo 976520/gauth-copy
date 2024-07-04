@@ -7,20 +7,18 @@ import styled from "styled-components";
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  align-self: center;
-  justify-self: center;
+  align-items: center;
+  justify-content: center;
   width: 25vw;
-  position: absolute;
-  top: 15vh;
 `;
 
 function App() {
   return (
-    <div id="wrapper">
+    <Wrapper>
       <Title />
       <SignUp />
       <LoginForm />
-    </div>
+    </Wrapper>
   );
 }
 

@@ -10,7 +10,7 @@ const Svg = styled.svg`
 const Logo = () => {
   return (
     <div>
-      <svg id="logo">
+      <Svg id="logo">
         <svg width="105" height="38" viewBox="0 0 105 38" fill="none" xmlns="http://www.w3.org/2000/svg">
           <circle cx="88.3984" cy="2" r="2" fill="#5499D9"></circle>
           <circle cx="75.3984" cy="2" r="2" fill="#5499D9"></circle>
@@ -35,7 +35,7 @@ const Logo = () => {
             fill="#1C1C1C"
           ></path>
         </svg>
-      </svg>
+      </Svg>
     </div>
   );
 };

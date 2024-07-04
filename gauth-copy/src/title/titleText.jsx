@@ -10,7 +10,7 @@ const Text = styled.p`
 const TitleText = () => {
   return (
     <div>
-      <h1>뭐든 단 한번으로</h1>
+      <Text>뭐든 단 한번으로</Text>
     </div>
   );
 };
