@@ -29,30 +29,42 @@ const ButtonsContainer = styled.div`
 `;
 
 function Login() {
-  const [id, setId] = useState("");
+  const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
+  const [emailText, setEmailText] = useState("이메일");
+  const [passwordText, setPasswordText] = useState("비밀번호");
+
+  localStorage.setItem("email", "test");
+  localStorage.setItem("password", "test1234");
 
   const handleLogin = () => {
-    if (id !== "user") {
-      setError("해당 유저를 찾을 수 없습니다.");
-    } else if (password !== "text1234") {
-      setError("비밀번호가 일치하지 않습니다..");
+    if (!email) {
+      setEmailText("*이메일 - 이메일을 입력하지 않았습니다");
+    } else if (!password) {
+      setPasswordText("*비밀번호 - 비밀번호를 입력하지 않았습니다");
     } else {
-      alert("로그인 성공");
-      setId("");
-      setPassword("");
+      if (email !== localStorage.getItem("email")) {
+        setError("해당 유저를 찾을 수 없습니다.");
+      } else if (password !== localStorage.getItem("password")) {
+        setError("비밀번호가 일치하지 않습니다..");
+      } else {
+        alert("로그인 성공");
+        setEmail("");
+        setPassword("");
+        setError("");
+      }
     }
   };
 
   return (
     <div>
       <div>
-        <label htmlFor="id">아이디</label>
-        <input type="text" id="id" value={id} onChange={(e) => setId(e.target.value)} />
+        <label htmlFor="email">{emailText}</label>
+        <input type="text" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
       </div>
       <div>
-        <label htmlFor="password">비밀번호</label>
+        <label htmlFor="password">{passwordText}</label>
         <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
       </div>
       {error && <p style={{ color: "red" }}>{error}</p>}
