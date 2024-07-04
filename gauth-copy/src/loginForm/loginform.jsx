@@ -1,14 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import IdInput from "./idInput.jsx";
-import PasswordInput from "./passwordInput.jsx";
-import styled from "styled-components";
+import Login from "./login.jsx";
 
 const LoginForm = () => {
   return (
     <div>
-      <IdInput />
-      <PasswordInput />
+      <Login />
     </div>
   );
 };

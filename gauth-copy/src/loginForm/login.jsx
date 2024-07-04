@@ -37,7 +37,7 @@ function Login() {
     if (id === "user" && password === "password") {
       alert("로그인 성공");
     } else {
-      setError("잘못됨");
+      setError("잘못됨ㅋ");
     }
   };
 
@@ -52,10 +52,10 @@ function Login() {
         <input type="password" id="password" value={password} onChange={(e) => setPassword(e.target.value)} />
       </div>
       {error && <p style={{ color: "red" }}>{error}</p>}
-      <ButtonsContainer>
-        <LoginButton onClick={handleLogin}>로그인</LoginButton>
-        <FindPassword href="">비밀번호 찾기</FindPassword>
-      </ButtonsContainer>
+      <div>
+        <button onClick={handleLogin}>로그인</button>
+        <a href="">비밀번호 찾기</a>
+      </div>
     </div>
   );
 }
