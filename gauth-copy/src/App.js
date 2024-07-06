@@ -3,6 +3,7 @@ import LoginForm from "./loginForm/loginform.jsx";
 import SignUp from "./signUp/signUp.jsx";
 import React from "react";
 import styled from "styled-components";
+import "./index.css";
 
 const Wrapper = styled.div`
   display: flex;
