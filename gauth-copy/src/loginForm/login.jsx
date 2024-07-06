@@ -10,6 +10,10 @@ const Container = styled.div`
   position: relative;
 `;
 
+const EmailContainer = styled(Container)``;
+
+const PasswordContainer = styled(Container)``;
+
 const Input = styled.input`
   position: absolute;
   top: 20px;
@@ -19,22 +23,17 @@ const Input = styled.input`
   border-bottom: 1px solid rgb(146, 146, 146);
 `;
 
+const EmailInput = styled(Input)``;
+
+const PasswordInput = styled(Input)``;
+
 const Label = styled.label`
-  color: rgb(146, 146, 146);
   font-size: 13px;
 `;
 
 const EmailLabel = styled(Label)``;
 
 const PasswordLabel = styled(Label)``;
-
-const EmailContainer = styled(Container)``;
-
-const PasswordContainer = styled(Container)``;
-
-const EmailInput = styled(Input)``;
-
-const PasswordInput = styled(Input)``;
 
 const Wrapper = styled.div`
   display: flex;
@@ -85,8 +84,6 @@ const ButtonsContainer = styled.div`
   align-items: center;
 `;
 
-const regex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,72}$/;
-
 function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
@@ -94,15 +91,23 @@ function Login() {
   const [passwordInputType, setPasswordInputType] = useState("password");
 
   const [emailText, setEmailText] = useState("이메일");
+  const [emailLabelColor, setEmailLabelColor] = useState("rgb(146, 146, 146)");
   const [passwordText, setPasswordText] = useState("비밀번호");
+  const [passwordLabelColor, setPasswordLabelColor] = useState("rgb(146, 146, 146)");
+
   localStorage.setItem("email", "test");
   localStorage.setItem("password", "test1234");
+
+  const regex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,72}$/;
+
   const handleLogin = () => {
     if (!email) {
       setEmailText("*이메일 - 이메일을 입력하지 않았습니다");
     } else if (!password) {
+      setPasswordLabelColor("red");
       setPasswordText("*비밀번호 - 비밀번호를 입력하지 않았습니다");
     } else if (regex.test(password)) {
+      setPasswordLabelColor("red");
       setPasswordText("*비밀번호 - 영어,숫자,특수문자를 각각 하나 이상 포함한 8자 이상 72자 이하 형식을 맞춰주세요");
     } else {
       if (email !== localStorage.getItem("email")) {
@@ -117,20 +122,28 @@ function Login() {
   };
 
   const init = () => {
+    setPasswordLabelColor("rgb(146, 146, 146)");
+    setEmailLabelColor("rgb(146, 146, 146)");
     setEmail("");
     setPassword("");
     setError("");
+    setPasswordText("비밀번호");
+    setEmailText("이메일");
   };
 
   return (
     <Wrapper>
       <EmailContainer>
-        <EmailLabel htmlFor="email">{emailText}</EmailLabel>
+        <EmailLabel htmlFor="email" style={{ color: { emailLabelColor } }}>
+          {emailText}
+        </EmailLabel>
         <br />
         <EmailInput type="text" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
       </EmailContainer>
       <PasswordContainer>
-        <PasswordLabel htmlFor="password">{passwordText}</PasswordLabel>
+        <PasswordLabel htmlFor="password" style={{ color: { passwordLabelColor } }}>
+          {passwordText}
+        </PasswordLabel>
         <br />
         <PasswordInput
           type={passwordInputType}
@@ -139,7 +152,6 @@ function Login() {
           onChange={(e) => setPassword(e.target.value)}
         />
         <EyeButton
-          id="eye"
           onClick={(e) => {
             if (passwordInputType === "password") {
               setPasswordInputType("text");
