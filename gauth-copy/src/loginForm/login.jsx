@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
-  margin: 10px;
+  margin: 20px;
   display: flex;
   width: 20vw;
   height: 40px;
@@ -10,13 +10,9 @@ const Container = styled.div`
   position: relative;
 `;
 
-const EmailContainer = styled(Container)`
-  top: 10px;
-`;
+const EmailContainer = styled(Container)``;
 
-const PasswordContainer = styled(Container)`
-  top: 20px;
-`;
+const PasswordContainer = styled(Container)``;
 
 const Input = styled.input`
   position: absolute;
@@ -58,25 +54,33 @@ const EyeButton = styled.button`
   background: none;
   border: none;
   top: 25px;
-  left: 18vw;
+  right: 0px;
   cursor: pointer;
 `;
 
+const ErrorMessage = styled.p`
+  color: red;
+
+  font-size: 14px;
+  position: absolute;
+`;
+
 const LoginButton = styled.button`
+  margin-bottom: 20px;
   background-color: rgb(84, 153, 217);
   width: 20vw;
   height: 40px;
   border-radius: 10px;
   position: relative;
-  top: 80px;
+  top: 60px;
   color: white;
   cursor: pointer;
   border: none;
 `;
 
 const FindPassword = styled.a`
+  margin: 40px;
   position: relative;
-  top: 80px;
   align-self: center;
   outline: none;
   color: rgb(146, 146, 146);
@@ -189,7 +193,7 @@ function Login() {
           </svg>
         </EyeButton>
       </PasswordContainer>
-      {error && <p style={{ color: "red" }}>{error}</p>}
+      {error && <ErrorMessage style={{ color: "red" }}>{error}</ErrorMessage>}
       <ButtonsContainer>
         <LoginButton onClick={handleLogin}>로그인</LoginButton>
         <br />
