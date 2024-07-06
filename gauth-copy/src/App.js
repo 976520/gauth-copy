@@ -9,7 +9,10 @@ const Wrapper = styled.div`
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  width: 25vw;
+  width: 99vw;
+  display: flex;
+  position: absolute;
+  top: 15vh;
 `;
 
 function App() {

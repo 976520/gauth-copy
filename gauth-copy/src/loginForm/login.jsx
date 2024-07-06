@@ -10,9 +10,13 @@ const Container = styled.div`
   position: relative;
 `;
 
-const EmailContainer = styled(Container)``;
+const EmailContainer = styled(Container)`
+  top: 10px;
+`;
 
-const PasswordContainer = styled(Container)``;
+const PasswordContainer = styled(Container)`
+  top: 20px;
+`;
 
 const Input = styled.input`
   position: absolute;
@@ -58,10 +62,10 @@ const EyeButton = styled.button`
 const LoginButton = styled.button`
   background-color: rgb(84, 153, 217);
   width: 20vw;
-  height: 6.5vh;
+  height: 40px;
   border-radius: 10px;
   position: relative;
-  top: 20px;
+  top: 80px;
   color: white;
   cursor: pointer;
   border: none;
@@ -69,12 +73,13 @@ const LoginButton = styled.button`
 
 const FindPassword = styled.a`
   position: relative;
-  top: 5vh;
+  top: 80px;
   align-self: center;
   outline: none;
   color: rgb(146, 146, 146);
-  font-size: 17px;
+  font-size: 14px;
   font-weight: 400;
+  text-decoration-line: none;
 `;
 
 const ButtonsContainer = styled.div`
