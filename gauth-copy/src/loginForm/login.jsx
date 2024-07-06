@@ -55,8 +55,11 @@ const EyeButton = styled.button`
   justify-content: center;
   width: 2vw;
   position: absolute;
+  background: none;
+  border: none;
   top: 25px;
   left: 18vw;
+  cursor: pointer;
 `;
 
 const LoginButton = styled.button`
@@ -93,12 +96,14 @@ function Login() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [error, setError] = useState("");
-  const [passwordInputType, setPasswordInputType] = useState("password");
 
   const [emailText, setEmailText] = useState("이메일");
   const [emailLabelColor, setEmailLabelColor] = useState("rgb(146, 146, 146)");
   const [passwordText, setPasswordText] = useState("비밀번호");
   const [passwordLabelColor, setPasswordLabelColor] = useState("rgb(146, 146, 146)");
+
+  const [seePassword, setSeePassword] = useState("");
+  const [passwordInputType, setPasswordInputType] = useState("password");
 
   localStorage.setItem("email", "test");
   localStorage.setItem("password", "test1234");
@@ -160,12 +165,28 @@ function Login() {
           onClick={(e) => {
             if (passwordInputType === "password") {
               setPasswordInputType("text");
+              setSeePassword("1");
             } else {
               setPasswordInputType("password");
+              setSeePassword("");
             }
           }}
         >
-          (눈)
+          <svg width="20" height="20" viewBox="0 0 28 28" fill="none" id="yes">
+            <path
+              d="M19.1936 5.89801C17.6819 5.34421 15.9557 4.99999 14 5C4 5.00006 0 14 0 14C0 14 1.52323 17.4273 5.03968 20.0519L7.81345 17.2781C7.29417 16.3002 7 15.1844 7 14C7 10.134 10.134 7 14 7C15.1844 7 16.3002 7.29417 17.2781 7.81345L19.1936 5.89801ZM15.7695 9.32212C15.2194 9.11394 14.623 9 14 9C11.2386 9 9 11.2386 9 14C9 14.623 9.11394 15.2194 9.32212 15.7695L15.7695 9.32212ZM10.0928 17.1201L17.1201 10.0928C17.646 10.5132 18.0851 11.0377 18.4064 11.6349L11.6349 18.4064C11.0377 18.0851 10.5132 17.646 10.0928 17.1201ZM8.67227 18.5406L6.30836 20.9045C6.88931 21.2539 7.51402 21.576 8.18396 21.8574L10.1767 19.8646C9.61382 19.4969 9.10711 19.0503 8.67227 18.5406ZM11.5889 20.5737L9.75117 22.4115C11.0265 22.7811 12.4403 23 14 23C24 23 28 14 28 14C28 14 26.6799 11.0298 23.6606 8.50203L20.5737 11.5889C20.8495 12.3406 21 13.1527 21 14C21 17.866 17.866 21 14 21C13.1527 21 12.3406 20.8495 11.5889 20.5737ZM18.9399 13.2227L13.2227 18.9399C13.476 18.9795 13.7356 19 14 19C16.7614 19 19 16.7614 19 14C19 13.7356 18.9795 13.476 18.9399 13.2227ZM19.8646 10.1767C19.4969 9.61382 19.0503 9.10711 18.5406 8.67227L20.6756 6.53725C21.314 6.85586 21.9066 7.21013 22.455 7.58633L19.8646 10.1767Z"
+              fill="#929292"
+            ></path>
+            {!seePassword && (
+              <path
+                d="M28 14C28 14 24 4.99994 14 5C4 5.00006 0 14 0 14C0 14 4 23 14 23C24 23 28 14 28 14ZM19 14C19 16.7614 16.7614 19 14 19C11.2386 19 9 16.7614 9 14C9 11.2386 11.2386 9 14 9C16.7614 9 19 11.2386 19 14ZM21 14C21 17.866 17.866 21 14 21C10.134 21 7 17.866 7 14C7 10.134 10.134 7 14 7C17.866 7 21 10.134 21 14Z"
+                fill="#929292"
+              ></path>
+            )}
+            {seePassword && (
+              <rect x="24.2129" y="3" width="2" height="30" transform="rotate(45 24.2129 3)" fill="#929292"></rect>
+            )}
+          </svg>
         </EyeButton>
       </PasswordContainer>
       {error && <p style={{ color: "red" }}>{error}</p>}
