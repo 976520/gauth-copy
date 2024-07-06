@@ -28,7 +28,7 @@ const EmailInput = styled(Input)``;
 const PasswordInput = styled(Input)``;
 
 const Label = styled.label`
-  font-size: 13px;
+  font-size: 14px;
 `;
 
 const EmailLabel = styled(Label)``;
