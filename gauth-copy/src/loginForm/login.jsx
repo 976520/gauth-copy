@@ -99,17 +99,18 @@ function Login() {
   const emailRef = useRef("");
   const passwordRef = useRef("");
   const [error, setError] = useState("");
-
   const [seePassword, setSeePassword] = useState(false);
   const [passwordInputType, setPasswordInputType] = useState("password");
-
-  const [emailText, setEmailText] = useState("이메일");
-  const [emailLabelColor, setEmailLabelColor] = useState("rgb(146, 146, 146)");
-  const [passwordText, setPasswordText] = useState("비밀번호");
-  const [passwordLabelColor, setPasswordLabelColor] = useState("rgb(146, 146, 146)");
-
-  localStorage.setItem("email", "test");
-  localStorage.setItem("password", "test1234!!");
+  const [fields, setFields] = useState({
+    email: {
+      text: "이메일",
+      labelColor: "rgb(146, 146, 146)",
+    },
+    password: {
+      text: "비밀번호",
+      labelColor: "rgb(146, 146, 146)",
+    },
+  });
 
   const regex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,72}$/;
 
@@ -118,25 +119,55 @@ function Login() {
     const password = passwordRef.current.value;
 
     if (!email) {
-      setEmailText("*이메일 - 이메일을 입력하지 않았습니다");
-      setEmailLabelColor("red");
+      setFields((prev) => ({
+        ...prev,
+        email: {
+          ...prev.email,
+          text: "*이메일 - 이메일을 입력하지 않았습니다",
+          labelColor: "red",
+        },
+      }));
       return;
     } else {
-      setEmailText("이메일");
-      setEmailLabelColor("rgb(146, 146, 146)");
+      setFields((prev) => ({
+        ...prev,
+        email: {
+          ...prev.email,
+          text: "이메일",
+          labelColor: "rgb(146, 146, 146)",
+        },
+      }));
     }
 
     if (!password) {
-      setPasswordLabelColor("red");
-      setPasswordText("*비밀번호 - 비밀번호를 입력하지 않았습니다");
+      setFields((prev) => ({
+        ...prev,
+        password: {
+          ...prev.password,
+          text: "*비밀번호 - 비밀번호를 입력하지 않았습니다",
+          labelColor: "red",
+        },
+      }));
       return;
     } else if (!regex.test(password)) {
-      setPasswordLabelColor("red");
-      setPasswordText("*비밀번호 - 영어, 숫자, 특수문자를 각각 하나 이상 포함한 8자 이상 72자 이하 형식을 맞춰주세요");
+      setFields((prev) => ({
+        ...prev,
+        password: {
+          ...prev.password,
+          text: "*비밀번호 - 영어, 숫자, 특수문자를 각각 하나 이상 포함한 8자 이상 72자 이하 형식을 맞춰주세요",
+          labelColor: "red",
+        },
+      }));
       return;
     } else {
-      setPasswordText("비밀번호");
-      setPasswordLabelColor("rgb(146, 146, 146)");
+      setFields((prev) => ({
+        ...prev,
+        password: {
+          ...prev.password,
+          text: "비밀번호",
+          labelColor: "rgb(146, 146, 146)",
+        },
+      }));
     }
 
     if (email !== localStorage.getItem("email")) {
@@ -153,24 +184,30 @@ function Login() {
     setError("");
     emailRef.current.value = "";
     passwordRef.current.value = "";
-    setEmailText("이메일");
-    setEmailLabelColor("rgb(146, 146, 146)");
-    setPasswordText("비밀번호");
-    setPasswordLabelColor("rgb(146, 146, 146)");
+    setFields({
+      email: {
+        text: "이메일",
+        labelColor: "rgb(146, 146, 146)",
+      },
+      password: {
+        text: "비밀번호",
+        labelColor: "rgb(146, 146, 146)",
+      },
+    });
   };
 
   return (
     <Wrapper>
       <EmailContainer>
-        <EmailLabel htmlFor="email" style={{ color: emailLabelColor }}>
-          {emailText}
+        <EmailLabel htmlFor="email" style={{ color: fields.email.labelColor }}>
+          {fields.email.text}
         </EmailLabel>
         <br />
         <EmailInput type="text" id="email" ref={emailRef} />
       </EmailContainer>
       <PasswordContainer>
-        <PasswordLabel htmlFor="password" style={{ color: passwordLabelColor }}>
-          {passwordText}
+        <PasswordLabel htmlFor="password" style={{ color: fields.password.labelColor }}>
+          {fields.password.text}
         </PasswordLabel>
         <br />
         <PasswordInput type={passwordInputType} id="password" ref={passwordRef} />
