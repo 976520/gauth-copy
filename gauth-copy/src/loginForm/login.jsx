@@ -109,7 +109,7 @@ function Login() {
   const [passwordLabelColor, setPasswordLabelColor] = useState("rgb(146, 146, 146)");
 
   localStorage.setItem("email", "test");
-  localStorage.setItem("password", "test1234!");
+  localStorage.setItem("password", "test1234!!");
 
   const regex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,72}$/;
 
