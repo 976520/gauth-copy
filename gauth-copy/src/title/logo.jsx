@@ -1,11 +1,5 @@
 import React from "react";
-import styled from "styled-components";
-
-const Svg = styled.svg`
-  height: 6vh;
-  top: -10px;
-  position: relative;
-`;
+import { Svg } from "./styledComponents";
 
 const Logo = () => {
   return (

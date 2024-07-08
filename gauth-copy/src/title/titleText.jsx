@@ -1,11 +1,5 @@
 import React from "react";
-import styled from "styled-components";
-
-const Text = styled.p`
-  font-size: 20px;
-  font-weight: 700;
-  color: rgb(28, 28, 28);
-`;
+import { Text } from "./styledComponents";
 
 const TitleText = () => {
   return (
