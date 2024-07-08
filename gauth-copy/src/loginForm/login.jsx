@@ -1,99 +1,18 @@
 import React, { useRef, useState } from "react";
-import styled from "styled-components";
-
-const Container = styled.div`
-  margin: 20px;
-  display: flex;
-  width: 20vw;
-  height: 40px;
-  left: 0;
-  position: relative;
-`;
-
-const EmailContainer = styled(Container)``;
-
-const PasswordContainer = styled(Container)``;
-
-const Input = styled.input`
-  position: absolute;
-  top: 20px;
-  height: 30px;
-  width: 20vw;
-  border: none;
-  border-bottom: 1px solid rgb(146, 146, 146);
-`;
-
-const EmailInput = styled(Input)``;
-
-const PasswordInput = styled(Input)``;
-
-const Label = styled.label`
-  font-size: 14px;
-`;
-
-const EmailLabel = styled(Label)``;
-
-const PasswordLabel = styled(Label)``;
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 25vw;
-  top: 15vh;
-`;
-
-const EyeButton = styled.button`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  width: 2vw;
-  position: absolute;
-  background: none;
-  border: none;
-  top: 25px;
-  right: 0px;
-  cursor: pointer;
-`;
-
-const ErrorMessage = styled.p`
-  color: red;
-  font-size: 14px;
-  position: absolute;
-`;
-
-const LoginButton = styled.button`
-  margin-bottom: 20px;
-  background-color: rgb(84, 153, 217);
-  width: 20vw;
-  height: 40px;
-  border-radius: 10px;
-  position: relative;
-  top: 60px;
-  color: white;
-  cursor: pointer;
-  border: none;
-`;
-
-const FindPassword = styled.a`
-  margin: 40px;
-  position: relative;
-  align-self: center;
-  outline: none;
-  color: rgb(146, 146, 146);
-  font-size: 14px;
-  font-weight: 400;
-  text-decoration-line: none;
-`;
-
-const ButtonsContainer = styled.div`
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-`;
+import {
+  EmailContainer,
+  PasswordContainer,
+  EmailInput,
+  PasswordInput,
+  EmailLabel,
+  PasswordLabel,
+  Wrapper,
+  EyeButton,
+  ErrorMessage,
+  LoginButton,
+  FindPassword,
+  ButtonsContainer,
+} from "./styledComponents";
 
 function Login() {
   const emailRef = useRef("");
