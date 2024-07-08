@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-export const Container = styled.div`
+const Container = styled.div`
   margin: 20px;
   display: flex;
   width: 20vw;
@@ -13,7 +13,7 @@ export const EmailContainer = styled(Container)``;
 
 export const PasswordContainer = styled(Container)``;
 
-export const Input = styled.input`
+const Input = styled.input`
   position: absolute;
   top: 20px;
   height: 30px;
@@ -26,7 +26,7 @@ export const EmailInput = styled(Input)``;
 
 export const PasswordInput = styled(Input)``;
 
-export const Label = styled.label`
+const Label = styled.label`
   font-size: 14px;
 `;
 
