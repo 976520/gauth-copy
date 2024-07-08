@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import styled from "styled-components";
 
 const Container = styled.div`
@@ -60,7 +60,6 @@ const EyeButton = styled.button`
 
 const ErrorMessage = styled.p`
   color: red;
-
   font-size: 14px;
   position: absolute;
 `;
@@ -97,83 +96,88 @@ const ButtonsContainer = styled.div`
 `;
 
 function Login() {
-  const [email, setEmail] = useState("");
-  const [password, setPassword] = useState("");
+  const emailRef = useRef("");
+  const passwordRef = useRef("");
   const [error, setError] = useState("");
+
+  const [seePassword, setSeePassword] = useState(false);
+  const [passwordInputType, setPasswordInputType] = useState("password");
 
   const [emailText, setEmailText] = useState("이메일");
   const [emailLabelColor, setEmailLabelColor] = useState("rgb(146, 146, 146)");
   const [passwordText, setPasswordText] = useState("비밀번호");
   const [passwordLabelColor, setPasswordLabelColor] = useState("rgb(146, 146, 146)");
 
-  const [seePassword, setSeePassword] = useState("");
-  const [passwordInputType, setPasswordInputType] = useState("password");
-
   localStorage.setItem("email", "test");
-  localStorage.setItem("password", "test1234");
+  localStorage.setItem("password", "test1234!");
 
   const regex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,72}$/;
 
   const handleLogin = () => {
+    const email = emailRef.current.value;
+    const password = passwordRef.current.value;
+
     if (!email) {
       setEmailText("*이메일 - 이메일을 입력하지 않았습니다");
-    } else if (!password) {
+      setEmailLabelColor("red");
+      return;
+    } else {
+      setEmailText("이메일");
+      setEmailLabelColor("rgb(146, 146, 146)");
+    }
+
+    if (!password) {
       setPasswordLabelColor("red");
       setPasswordText("*비밀번호 - 비밀번호를 입력하지 않았습니다");
-    } else if (regex.test(password)) {
+      return;
+    } else if (!regex.test(password)) {
       setPasswordLabelColor("red");
-      setPasswordText("*비밀번호 - 영어,숫자,특수문자를 각각 하나 이상 포함한 8자 이상 72자 이하 형식을 맞춰주세요");
+      setPasswordText("*비밀번호 - 영어, 숫자, 특수문자를 각각 하나 이상 포함한 8자 이상 72자 이하 형식을 맞춰주세요");
+      return;
     } else {
-      if (email !== localStorage.getItem("email")) {
-        setError("해당 유저를 찾을 수 없습니다.");
-      } else if (password !== localStorage.getItem("password")) {
-        setError("비밀번호가 일치하지 않습니다..");
-      } else {
-        alert("로그인 성공");
-        init();
-      }
+      setPasswordText("비밀번호");
+      setPasswordLabelColor("rgb(146, 146, 146)");
+    }
+
+    if (email !== localStorage.getItem("email")) {
+      setError("해당 유저를 찾을 수 없습니다.");
+    } else if (password !== localStorage.getItem("password")) {
+      setError("비밀번호가 일치하지 않습니다.");
+    } else {
+      alert("로그인 성공");
+      init();
     }
   };
 
   const init = () => {
-    setPasswordLabelColor("rgb(146, 146, 146)");
-    setEmailLabelColor("rgb(146, 146, 146)");
-    setEmail("");
-    setPassword("");
     setError("");
-    setPasswordText("비밀번호");
+    emailRef.current.value = "";
+    passwordRef.current.value = "";
     setEmailText("이메일");
+    setEmailLabelColor("rgb(146, 146, 146)");
+    setPasswordText("비밀번호");
+    setPasswordLabelColor("rgb(146, 146, 146)");
   };
 
   return (
     <Wrapper>
       <EmailContainer>
-        <EmailLabel htmlFor="email" style={{ color: { emailLabelColor } }}>
+        <EmailLabel htmlFor="email" style={{ color: emailLabelColor }}>
           {emailText}
         </EmailLabel>
         <br />
-        <EmailInput type="text" id="email" value={email} onChange={(e) => setEmail(e.target.value)} />
+        <EmailInput type="text" id="email" ref={emailRef} />
       </EmailContainer>
       <PasswordContainer>
-        <PasswordLabel htmlFor="password" style={{ color: { passwordLabelColor } }}>
+        <PasswordLabel htmlFor="password" style={{ color: passwordLabelColor }}>
           {passwordText}
         </PasswordLabel>
         <br />
-        <PasswordInput
-          type={passwordInputType}
-          id="password"
-          value={password}
-          onChange={(e) => setPassword(e.target.value)}
-        />
+        <PasswordInput type={passwordInputType} id="password" ref={passwordRef} />
         <EyeButton
-          onClick={(e) => {
-            if (passwordInputType === "password") {
-              setPasswordInputType("text");
-              setSeePassword("1");
-            } else {
-              setPasswordInputType("password");
-              setSeePassword("");
-            }
+          onClick={() => {
+            setPasswordInputType(passwordInputType === "password" ? "text" : "password");
+            setSeePassword(!seePassword);
           }}
         >
           <svg width="20" height="20" viewBox="0 0 28 28" fill="none" id="yes">
@@ -193,7 +197,7 @@ function Login() {
           </svg>
         </EyeButton>
       </PasswordContainer>
-      {error && <ErrorMessage style={{ color: "red" }}>{error}</ErrorMessage>}
+      {error && <ErrorMessage>{error}</ErrorMessage>}
       <ButtonsContainer>
         <LoginButton onClick={handleLogin}>로그인</LoginButton>
         <br />
