@@ -20,6 +20,7 @@ const Input = styled.input`
   width: 20vw;
   border: none;
   border-bottom: 1px solid rgb(146, 146, 146);
+  background: none;
 `;
 
 export const EmailInput = styled(Input)``;
