@@ -21,6 +21,7 @@ const Input = styled.input`
   border: none;
   border-bottom: 1px solid rgb(146, 146, 146);
   background: none;
+  outline: none;
 `;
 
 export const EmailInput = styled(Input)``;
@@ -62,6 +63,7 @@ export const ErrorMessage = styled.p`
   color: red;
   font-size: 14px;
   position: absolute;
+  left: 610px;
 `;
 
 export const LoginButton = styled.button`

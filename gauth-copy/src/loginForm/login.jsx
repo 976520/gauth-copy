@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
+
 import {
   EmailContainer,
   PasswordContainer,
@@ -16,6 +17,8 @@ import {
 } from "./styledComponents";
 
 function Login() {
+  localStorage.setItem("email", "asdf");
+  localStorage.setItem("password", "asdf1234!");
   const {
     register,
     handleSubmit,
@@ -25,25 +28,19 @@ function Login() {
   } = useForm();
   const [seePassword, setSeePassword] = useState(false);
   const [passwordInputType, setPasswordInputType] = useState("password");
+  const [errorMessage, setErrorMessage] = useState("");
 
   const regex = /^(?=.*[a-zA-Z])(?=.*\d)(?=.*[!@#$%^&*(),.?":{}|<>])[A-Za-z\d!@#$%^&*(),.?":{}|<>]{8,72}$/;
 
   const onSubmit = ({ email, password }) => {
     clearErrors();
-
-    let valid = true;
+    setErrorMessage("");
 
     if (email !== localStorage.getItem("email")) {
-      setError("email", { type: "manual", message: "해당 유저를 찾을 수 없습니다." });
-      valid = false;
-    }
-
-    if (password !== localStorage.getItem("password")) {
-      setError("password", { type: "manual", message: "비밀번호가 일치하지 않습니다." });
-      valid = false;
-    }
-
-    if (valid) {
+      setErrorMessage("해당 유저를 찾을 수 없습니다.");
+    } else if (password !== localStorage.getItem("password")) {
+      setErrorMessage("비밀번호가 일치하지 않습니다.");
+    } else {
       alert("로그인 성공");
       init();
     }
@@ -51,8 +48,7 @@ function Login() {
 
   const init = () => {
     clearErrors();
-    document.getElementById("email").value = "";
-    document.getElementById("password").value = "";
+    setErrorMessage("");
   };
 
   return (
@@ -110,8 +106,7 @@ function Login() {
             </svg>
           </EyeButton>
         </PasswordContainer>
-        {errors.email && <ErrorMessage>{errors.email.message}</ErrorMessage>}
-        {errors.password && <ErrorMessage>{errors.password.message}</ErrorMessage>}
+        {errorMessage && <ErrorMessage>{errorMessage}</ErrorMessage>}
         <ButtonsContainer>
           <LoginButton type="submit">로그인</LoginButton>
           <br />
