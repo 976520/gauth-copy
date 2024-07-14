@@ -1,5 +1,5 @@
 import Title from "./title/title.jsx";
-import LoginForm from "./loginForm/loginform.jsx";
+import Login from "./loginForm/loginForm.jsx";
 import SignUp from "./signUp/signUp.jsx";
 import React from "react";
 import styled from "styled-components";
@@ -21,7 +21,7 @@ function App() {
     <Wrapper>
       <Title />
       <SignUp />
-      <LoginForm />
+      <Login />
     </Wrapper>
   );
 }
