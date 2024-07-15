@@ -1,5 +1,5 @@
 import React from "react";
-import { A, P } from "./styledComponents";
+import { A, P } from "./style";
 
 const Text = () => {
   return (
