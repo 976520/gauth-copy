@@ -1,5 +1,5 @@
 import React from "react";
-import { Svg } from "./styledComponents";
+import { Svg } from "./style";
 
 const Logo = () => {
   return (

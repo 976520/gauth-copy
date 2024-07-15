@@ -1,5 +1,5 @@
 import React from "react";
-import { ErrorMessage } from "./styledComponents";
+import { ErrorMessage } from "./style";
 
 const ErrorDisplay = ({ message }) => {
   return message ? <ErrorMessage>{message}</ErrorMessage> : null;

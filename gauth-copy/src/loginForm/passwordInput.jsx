@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { PasswordContainer, PasswordInput, PasswordLabel, EyeButton } from "./styledComponents";
+import { PasswordContainer, PasswordInput, PasswordLabel, EyeButton } from "./style";
 
 const PasswordInputField = ({ register, errors, regex }) => {
   const [seePassword, setSeePassword] = useState(false);

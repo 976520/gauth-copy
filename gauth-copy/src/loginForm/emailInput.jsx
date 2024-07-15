@@ -1,5 +1,5 @@
 import React from "react";
-import { EmailContainer, EmailInput, EmailLabel } from "./styledComponents";
+import { EmailContainer, EmailInput, EmailLabel } from "./style";
 
 const EmailInputField = ({ register, errors }) => {
   return (

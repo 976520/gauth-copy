@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import { useForm } from "react-hook-form";
 
-import { Wrapper, LoginButton, FindPassword, ButtonsContainer } from "./styledComponents";
+import { Wrapper, LoginButton, FindPassword, ButtonsContainer } from "./style";
 import EmailInputField from "./emailInput";
 import PasswordInputField from "./passwordInput";
 import ErrorDisplay from "./errorMessage";
